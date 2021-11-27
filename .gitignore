@@ -139,3 +139,4 @@ cython_debug/
 
 # vscode conf
 .vscode/
+src/configuration/config.py
