@@ -1,23 +1,18 @@
-from tortoise.models import Model
-from tortoise import fields
+from tortoise import models, fields
+from tortoise.contrib.pydantic.creator import pydantic_model_creator
 
-#В нем содержится вся основная информация:
-#  - email; CharField
-#  - phone; CharField
-#  - role (student, teacher, dean); Model
-#  - full_name; CharField
-#  - admission_year; IntField
-#  - course; Model
-#  - direction; Model
-#  - group; Model
-#  - mb course and direction in Model Group???
-#  - student_number; IntField
-#  - hostel; Bool? mb ChoiceField(Svechka, Studak, No)
 
-class User(Model):
+class User(models.Model):
     id = fields.UUIDField(pk=True)
+    student_id = fields.IntField()
     email = fields.CharField(50)
     phone = fields.CharField(15)
-    role = fields.ManyToManyField()
+    role = fields.ManyToManyField('models.Role')
     full_name = fields.CharField(60)
     admission_year = fields.IntField()
+    group = fields.ForeignKeyField('models.Group')
+    hostel = fields.ForeignKeyField('models.Hostel')
+
+User_Pydentic = pydantic_model_creator(User, name='User')
+UserIn_Pydentic = pydantic_model_creator(User, name='UserIn', exclude_readonly=True)
+
