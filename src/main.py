@@ -7,11 +7,6 @@ import aioredis
 
 app = FastAPI()
 
-@app.get('/')
-async def route():
-    return {'It':'Works'}
-
-
-
+register_tortoise()
 
 
