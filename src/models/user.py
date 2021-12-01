@@ -12,6 +12,10 @@ class User(models.Model):
     admission_year = fields.IntField()
     group = fields.ForeignKeyField('models.Group')
     hostel = fields.ForeignKeyField('models.Hostel')
+    password_hash = fields.CharField(max_length=200)
+    class PydanticMeta:
+        exclude = ['']
+        
 
 User_Pydentic = pydantic_model_creator(User, name='User')
 UserIn_Pydentic = pydantic_model_creator(User, name='UserIn', exclude_readonly=True)

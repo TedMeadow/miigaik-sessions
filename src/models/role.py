@@ -3,7 +3,7 @@ from tortoise.contrib.pydantic.creator import pydantic_model_creator
 
 class Role(models.Model):
     name = fields.CharField(max_length=20, pk=True)
-    permissions = fields.ManyToManyField('models.Permisson')
+    permissions = fields.ManyToManyField('models.Permission')
 
 class Permission(models.Model):
     name = fields.CharField(pk=True, max_length=20)
