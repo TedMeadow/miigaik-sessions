@@ -19,6 +19,7 @@ idna==3.3
 iso8601==0.1.16
 Jinja2==3.0.3
 MarkupSafe==2.0.1
+passlib==1.7.4
 pendulum==2.1.2
 pycparser==2.21
 pydantic==1.8.2
